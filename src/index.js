@@ -1,13 +1,14 @@
 const express = require('express');
-const { sequalize, connectToMysql } = require('./configs/mysqldb');
-const router = require('./routes/product');
+const { connectToMysql } = require('./configs/mysqldb');
+const userRoutes = require('./routes/users');
 const app = express();
 
 app.use(express.json());
-app.use('/api', router);
 
-app.get('/', (request, response) => {
-  response.status(200).json({message: 'Hello World!'});
+app.use('/api/users', userRoutes);
+
+app.get('/', (req, res) => {
+  res.status(200).json({message: 'Hello World!'});
 });
 
 app.listen(3000, async () => {

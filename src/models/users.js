@@ -3,24 +3,30 @@ const DataTypes = require('sequelize');
 
 const User = sequalize.define('users', {
 	user_id: {
-		type: DataTypes.BIGINT,
-		autoIncrement: true,
-    	primaryKey: true
+	  type: DataTypes.INTEGER,
+	  primaryKey: true,
+	  autoIncrement: true,
+	  indexes: [{ unique: true, fields: ['user_id'] }]
 	},
 	username: {
-		type: DataTypes.STRING(100)
+	  type: DataTypes.STRING,
+	  allowNull: false,
+	},
+	email: {
+	  type: DataTypes.STRING,
+	  allowNull: false,
+	  unique: true,
 	},
 	phone: {
-		type: DataTypes,
-		allowNull: false
+	  type: DataTypes.STRING,
+	  allowNull: false,
+	  unique: true,
 	},
-	stock: {
-		type: DataTypes.INTEGER,
-		allowNull: false
-	}
-})
+  }, {
+	timestamps: true,
+  });
 
 // Execute the sync command to run migrations 
 // sequalize.sync()
 
-module.exports = Product;
+module.exports = User;
