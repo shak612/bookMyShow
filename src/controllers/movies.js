@@ -1,10 +1,10 @@
-const { usersGetService } = require("../services/users/get");
-const { usersGetSingleService } = require("../services/users/getSingle");
-const { usersPostService } = require("../services/users/post");
-const { usersPutService } = require("../services/users/put");
+const { moviesGetService } = require("../services/movies/get");
+const { moviesGetSingleService } = require("../services/movies/getSingle");
+const { moviesPostService } = require("../services/movies/post");
+const { moviesPutService } = require("../services/movies/put");
 
-exports.getUsersController = (req, res) => {
-  usersGetService()
+exports.getMoviesController = (req, res) => {
+  moviesGetService()
     .then((response) => {
       if (!response.status) {
         throw new Error(response.message);
@@ -23,8 +23,8 @@ exports.getUsersController = (req, res) => {
     });
 };
 
-exports.getSingleUsersController = (req, res) => {
-    usersGetSingleService(req.params)
+exports.getSingleMoviesController = (req, res) => {
+    moviesGetSingleService(req.params)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
@@ -41,10 +41,10 @@ exports.getSingleUsersController = (req, res) => {
           message: err.message,
         });
       });
-  };
+};
 
-exports.postUsersController = (req, res) => {
-    usersPostService(req.body)
+exports.postMoviesController = (req, res) => {
+    moviesPostService(req.body)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
@@ -61,10 +61,10 @@ exports.postUsersController = (req, res) => {
           message: err.message,
         });
       });
-  };
+};
 
-exports.putUsersController = (req, res) => {
-    usersPutService(req.body)
+exports.putMoviesController = (req, res) => {
+    moviesPutService(req.body)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
@@ -81,4 +81,4 @@ exports.putUsersController = (req, res) => {
           message: err.message,
         });
       });
-  };
+};
