@@ -1,10 +1,10 @@
-const { moviesGetService } = require("../services/movies/get");
-const { moviesGetSingleService } = require("../services/movies/getSingle");
-const { moviesPostService } = require("../services/movies/post");
-const { moviesPutService } = require("../services/movies/put");
+const { showsGetService } = require("../services/shows/get");
+const { showsGetSingleService } = require("../services/shows/getSingle");
+const { showsPostService } = require("../services/shows/post");
+const { showsPutService } = require("../services/shows/put");
 
-exports.getMoviesController = (req, res) => {
-  moviesGetService()
+exports.getShowsController = (req, res) => {
+  showsGetService()
     .then((response) => {
       if (!response.status) {
         throw new Error(response.message);
@@ -23,9 +23,8 @@ exports.getMoviesController = (req, res) => {
     });
 };
 
-exports.getSingleMoviesController = (req, res) => {
-  console.log("req.params", req.params)
-    moviesGetSingleService(req.params)
+exports.getSingleShowsController = (req, res) => {
+    showsGetSingleService(req.params)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
@@ -44,8 +43,8 @@ exports.getSingleMoviesController = (req, res) => {
       });
 };
 
-exports.postMoviesController = (req, res) => {
-    moviesPostService(req.body)
+exports.postShowsController = (req, res) => {
+    showsPostService(req.body)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
@@ -64,8 +63,8 @@ exports.postMoviesController = (req, res) => {
       });
 };
 
-exports.putMoviesController = (req, res) => {
-    moviesPutService(req.body)
+exports.putShowsController = (req, res) => {
+    showsPutService(req.body)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);

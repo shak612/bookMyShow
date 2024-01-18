@@ -10,7 +10,7 @@ const Show = sequalize.define('shows', {
       autoIncrement: true,
       indexes: [{ unique: true, fields: ['show_id'] }]
     },
-    time: {
+    dateAndTime: {
       type: DataTypes.STRING,
       allowNull: false,
     },
