@@ -21,6 +21,9 @@ const Movie = sequalize.define('movies', {
   });
 
 // Execute the sync command to run migrations 
-// sequalize.sync()
+sequalize
+  .sync({ force: false })
+  .then(() => console.log("Synced Movie table"))
+  .catch((error) => console.log("Error in Movie table", error));
 
 module.exports = Movie;

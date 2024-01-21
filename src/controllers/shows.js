@@ -4,7 +4,7 @@ const { showsPostService } = require("../services/shows/post");
 const { showsPutService } = require("../services/shows/put");
 
 exports.getShowsController = (req, res) => {
-  showsGetService()
+  showsGetService(req.params, req.query)
     .then((response) => {
       if (!response.status) {
         throw new Error(response.message);
@@ -24,7 +24,7 @@ exports.getShowsController = (req, res) => {
 };
 
 exports.getSingleShowsController = (req, res) => {
-    showsGetSingleService(req.query)
+    showsGetSingleService(req.params, req.query)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);

@@ -21,6 +21,9 @@ const Theater = sequalize.define('theaters', {
   });
 
 // Execute the sync command to run migrations 
-// sequalize.sync()
+sequalize
+  .sync({ force: false })
+  .then(() => console.log("Synced Theater table"))
+  .catch((error) => console.log("Error in Theater table", error));
 
 module.exports = Theater;

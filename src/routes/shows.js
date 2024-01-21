@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/post', shows.postShowsController)
 router.put('/put', shows.putShowsController)
-router.get('/get', shows.getSingleShowsController)
-router.get('/get', shows.getShowsController)
+router.get('/get/:theater_id', shows.getShowsController)
+// router.get('/get/:theater_id', shows.getSingleShowsController)
 
 module.exports = router;

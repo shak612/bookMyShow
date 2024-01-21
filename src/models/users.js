@@ -27,6 +27,9 @@ const User = sequalize.define('users', {
   });
 
 // Execute the sync command to run migrations 
-// sequalize.sync()
+sequalize
+  .sync({ force: false })
+  .then(() => console.log("Synced Show table"))
+  .catch((error) => console.log("Error in Show table", error));
 
 module.exports = User;

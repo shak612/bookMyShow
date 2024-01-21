@@ -24,7 +24,6 @@ exports.getMoviesController = (req, res) => {
 };
 
 exports.getSingleMoviesController = (req, res) => {
-  console.log("req.params", req.params)
     moviesGetSingleService(req.params)
       .then((response) => {
         if (!response.status) {

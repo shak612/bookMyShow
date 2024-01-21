@@ -24,6 +24,9 @@ const Ticket = sequalize.define('tickets', {
   
 
 // Execute the sync command to run migrations 
-// sequalize.sync()
+sequalize
+  .sync({ force: false })
+  .then(() => console.log("Synced Ticket table"))
+  .catch((error) => console.log("Error in Ticket table", error));
 
 module.exports = Ticket;
