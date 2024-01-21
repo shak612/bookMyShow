@@ -1,13 +1,32 @@
 const Shows = require("../../models/shows");
+const Movies = require("../../models/movies")
+const Theaters = require("../../models/theaters")
 
 exports.showsGetSingleService = async (query) => {
+
     try {
         const response = {
             status: false,
             data: []
         }
-        const { show_id } = query;
-        const show = await Shows.findByPk(show_id);
+        const { dateAndTime, theater_id} = query;
+
+        const show = await Shows.findAll({
+            where: {
+              dateAndTime: dateAndTime,
+              theater_id: theater_id
+            },
+            include: [
+              {
+                model: Movies,
+                attributes: ['movie_name', 'genre'], // Include only specific attributes from Movie model
+              },
+              {
+                model: Theaters,
+                attributes: ['theater_name', 'location'], // Include only specific attributes from Theater model
+              },
+            ],
+          })
         
         if(show){
           response.status = true;

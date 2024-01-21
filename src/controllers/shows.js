@@ -24,7 +24,7 @@ exports.getShowsController = (req, res) => {
 };
 
 exports.getSingleShowsController = (req, res) => {
-    showsGetSingleService(req.params)
+    showsGetSingleService(req.query)
       .then((response) => {
         if (!response.status) {
           throw new Error(response.message);
